@@ -3,7 +3,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
 /*
  ID: farmersrice
@@ -11,15 +10,17 @@ import java.util.Arrays;
  TASK: inflate
  */
 
+/*
+ * Solution: Keep track of the highest score for a certain number of minutes in an array. Whenever you read in a new combination, you update the array.
+ */
 public class inflate {
 
     public static void main(String[] args) throws Exception {
         BufferedReader r = new BufferedReader(new FileReader("inflate.in"));
         PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter("inflate.out")));
 
-        // BufferedReader r = new BufferedReader(new
-        // InputStreamReader(System.in));
-        // PrintWriter w = new PrintWriter(System.out);
+        //BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+        //PrintWriter w = new PrintWriter(System.out);
 
         String input = r.readLine();
         String[] inputs = input.split(" ");
@@ -36,63 +37,25 @@ public class inflate {
 
         }
 
-        Class[] classes = new Class[classCount];
+        
+        int[] scores = new int[minutes + 1];
 
         for (int i = 0; i < classCount; i++) {
             input = r.readLine();
             inputs = input.split(" ");
-            classes[i] = new Class(Integer.parseInt(inputs[0]), Integer.parseInt(inputs[1]));
+            
+            int points = Integer.parseInt(inputs[0]);
+            int minute = Integer.parseInt(inputs[1]);
+            
+            for (int j = 0; j + minute <= minutes; j++) {
+                scores[j + minute] = Math.max(scores[j] + points, scores[j + minute]);
+            }
         }
 
-        Arrays.sort(classes);
-
-        int answer = 0;
-        int index = 0;
-        while (minutes > 0) {
-            if (minutes - classes[index].minutes >= 0) {
-                answer += classes[index].points;
-                minutes -= classes[index].minutes;
-            } else if (index + 1 < classes.length) {
-                index++;
-            } else
-                break;
-        }
-
-        w.println(answer);
+        w.println(scores[minutes]);
         w.flush();
         r.close();
         w.close();
         System.exit(0);
     }
-
-    public static class Class implements Comparable<Class> {
-        int points;
-        int minutes;
-        double ratio; // points per minute
-
-        public Class(int p, int m) {
-            points = p;
-            minutes = m;
-            ratio = ((double) p) / ((double) m);
-        }
-
-        @Override
-        public int compareTo(Class o) {
-            if (ratio - o.ratio < 0)
-                return 1;
-            if (ratio - o.ratio > 0)
-                return -1;
-
-            if (minutes - o.minutes < 0)
-                return 1;
-            if (minutes - o.minutes > 0)
-                return -1;
-            return 0;
-        }
-
-        public String toString() {
-            return points + " " + minutes;
-        }
-    }
-
 }
