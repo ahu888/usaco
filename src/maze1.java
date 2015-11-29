@@ -1,7 +1,5 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 
@@ -22,11 +20,11 @@ public class maze1 {
 	//static int[][] weight;
 	public static void main(String[] args) throws Exception {
 		
-		BufferedReader r = new BufferedReader(new FileReader("maze1.in"));
-		PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter("maze1.out")));
+		//BufferedReader r = new BufferedReader(new FileReader("maze1.in"));
+		//PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter("maze1.out")));
 
-		//BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-		//PrintWriter w = new PrintWriter(System.out);
+		BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+	    PrintWriter w = new PrintWriter(System.out);
         
 		String wh = r.readLine();
 		String[] whArr = wh.split(" ");
@@ -150,7 +148,7 @@ public class maze1 {
 		while (nodesVisited < vertices.length) {
 			Vertex u = new Vertex();
 			if (nodesVisited == 4) {
-				System.out.println(1);
+				//System.out.println(1);
 			}
 			for (int i = 0; i < vertices.length; i++) {
 				if (vertices[i].distance1 < u.distance1 && vertices[i].visited == false) 

@@ -1,7 +1,5 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -15,11 +13,11 @@ public class castle {
 
 	public static int counter = 0;
 	public static void main(String[] args) throws Exception {
-		BufferedReader r = new BufferedReader(new FileReader("castle.in"));
-		PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter("castle.out")));
+		//BufferedReader r = new BufferedReader(new FileReader("castle.in"));
+		//PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter("castle.out")));
 
-		//BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-		//PrintWriter w = new PrintWriter(System.out);
+		BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+		PrintWriter w = new PrintWriter(System.out);
 		castle c = new castle();
 		
 		String input = r.readLine();
