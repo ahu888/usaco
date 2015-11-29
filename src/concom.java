@@ -12,7 +12,7 @@ TASK: concom
 */
 
 public class concom {
-
+/*
 	
 	//static Company[] companies = new Company[10000]; //at most 100 companies and we do not use 0
 	static HashSet<Company> companies = new HashSet<Company>();
@@ -101,5 +101,5 @@ public class concom {
 			else return false;
 		}
 	}
-
+*/
 }

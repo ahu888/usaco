@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 
 public class flow {
-
+/*
     public static void main(String[] args) throws Exception {
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter w = new PrintWriter(System.out);
@@ -54,5 +54,5 @@ public class flow {
             distances.add(dist);
         }
     }
-
+*/
 }
